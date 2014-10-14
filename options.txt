@@ -1,0 +1,124 @@
+
+  
+
+
+python todos_get_cabling.py -f 100356 
+
+
+    #############these options are fot getting the info of the cabling file####################################
+
+para tener un archivo con los detid del cabling file
+python todos_get_cabling.py -f 100356 -a nombrearchivo.txt
+
+para el tracker map de los modulos del cabling
+python todos_get_cabling.py -f 100356 --at nombreimagen.png
+
+
+archivo con detids de algunos feds
+python todos_get_cabling.py -f 100356 -z 180 190 --zi archivo.txt
+
+para el tracker map de modulos con cierto fedid
+python todos_get_cabling.py -f 100356 -b 180 190 --bf hola.png
+
+para obtener datos sobre modulos en especifico
+python todos_get_cabling.py -f 100356 -c 470078889 470062536 --cp 0 1 --ci FedCrate
+    
+FedCrate,FedSlot,FedId,FeUnit,FeChan,FedCh,FecCrate,FecSlot,FecRing,CcuAddr,CcuChan,DcuId,DetId,LldChan,APV0,APV1,pairNumber,nPairs,nStrips,DCU,MUX,PLL,LLD")
+
+
+informacion sobre los feds:
+ python todos_get_cabling.py -f 100356 -g 180 --gf 35 --gi APV0
+ 
+modulos de ciertas propiedades
+    python todos_get_cabling.py -f 100356 -d FedCrate CcuAddr --di 23 123
+
+ propiedades con modulos en comun
+python todos_get_cabling.py -f 100356 -n FedCrate CcuAddr --ni 23 123
+
+    
+    ########these options are for the alias#############################################
+
+    parser.add_option("-k","--fila",type="string", dest="fialc", help="Dump the Alias of the DetIds of the Cabling file in a txt file, write the name of the file")
+    python todos_get_cabling.py -f 100356 -k nombraestearchivo.txt
+
+    parser.add_option("-l","--alim",action="callback", callback=cb, dest="alimod", help="Know the Alias of a (set of) module(s),write the modules")
+    python todos_get_cabling.py -f 100356 -l 470079141
+
+
+    parser.add_option("-m","--moda",action="callback", callback=cb, dest="modali", help="Know the modules associated to some Alias,write the Alias or something like: from TEC, TECmi, TECminus_7,TECminus_7_5 etc")
+    parser.add_option("--mf","--filn",type="string",dest="filena",help="write the name of the file with the modules associated to some alias")
+modules associated to some alias
+python todos_get_cabling.py -f 100356 -m TECminus_7_5 TECminus_7 --mf aliasfile.txt
+
+tracker map of modules in certain subdetector
+python todos_get_cabling.py -f 100356 -y TEC --yf holis.png
+  
+
+parser.add_option("-o","--modi",action="callback",callback=cb,dest="modinf",help="write the modules to know if they are located on certain subdetector")
+    parser.add_option("--os","--subi",action="callback",callback=cb, dest="subinf", help="write the subdetector in order to know if the module is located there")
+to know it the modules are or not in certain subdetector
+python todos_get_cabling.py -f 100356 -o  470095014 470049644 --os TEC TECminus
+
+
+
+    ################these options are for the hv#######################
+para saber cierta propiedad del hv,PSUName,Cmstrk,Crate,Board,Branch,TrackerSY,Channe
+python todos_get_cabling.py -f 100356 -r 470078852 470078758 --ri Crate Channel
+
+para saber los detids de los modulos con cierta info del hv
+python todos_get_cabling.py -f 100356 -t cms_trk_dcs_05:CAEN branchController05 --tf nombraelarchivo.txt
+
+tracker map de modulos con cierta info del hv
+python todos_get_cabling.py -f 100356 -v cms_trk_dcs_05:CAEN branchController05 --vf nombrame.png
+
+
+archivo de dos o mas propiedades con modulos en comun, o sea en este ejemplo el archivo tiene los modulos que cms_trk_dcs_05:CAEN y BranchController05 tienen 
+en comun
+python todos_get_cabling.py -f 100356 -w cms_trk_dcs_05:CAEN branchController05 --wf nombrameya.txt
+
+
+
+###################info between source #############################################
+
+para saber --ja (propiedad del cabling)  de los modulos con alias -j
+python todos_get_cabling.py -f 100356 -j TEC TIB --ja FedCrate 
+
+para saber que cual es el alias de los modulos con la propiedad del cabling escrita
+python todos_get_cabling.py -f 100356 -e FedCrate --en 23
+
+para saber los modulos que tienen la propiedad del cabling escrita
+python todos_get_cabling.py -f 100356 -d FedCrate --di 23
+
+para saber si los modulos con propiedad (delcabling) FedCrate23 estan el subdetector TEC
+python todos_get_cabling.py -f 100356 -i FedCrate --in 23 --ia TEC
+
+para saber la --qi de los modulos con alias -q
+python todos_get_cabling.py -f 100356 -q TEC --qi Crate
+
+para saber el alias de los modulos con propiedad -p
+python todos_get_cabling.py -f 100356 -p  CMS_TRACKER_SY1527_4
+
+para saber el informacion hv de modulos con con cierta propiedad cabling 
+python todos_get_cabling.py -f 100356 -s FedCrate --sc 23 --sh Crate
+
+para saber informacion cabling de modulos con cierta propiedad hv
+python todos_get_cabling.py -f 100356 -u channel002 --uc FedCrate
+
+
+
+#################################info from two sources to a third one######
+para saber el alias de modulos con cierta informacion del cabling y del hv
+
+python todos_get_cabling.py -f 100356 --cd FedCrate CcuAddr --cn 21 121 --ch branchController05 channel003
+
+para saber cabling dados hv y alias 
+python todos_get_cabling.py -f 100356 --hd branchController05 --ha TEC --hc CcuAddr APV0
+
+ python todos_get_cabling.py -f 100356 --ad TEC --ac APV0 FedCrate --an 54 23 --ah Branch Channel
+#####other instructions
+
+para el caso de introducir el link 
+
+se corren casi igual, solo hay que poner --fu link del cabling file, por ejemplo
+
+python todos_get_cabling.py --fu SiStripFedCabling_GR09_31X_v1/CablingLog/CablingInfo_Run1.txt  -a nombrearchivo.txt
