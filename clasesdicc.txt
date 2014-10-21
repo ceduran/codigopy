@@ -1,0 +1,42 @@
+Para el diccionario del cabling file
+
+
+DictionaryCab
+cabdet
+trmcab
+fdetfed
+trmdetfed
+cabinfodet
+cabinfofed
+cabtodet
+cabcomdet
+
+para el diccionario del alias
+
+AliasFun
+alscabdet
+alsinfodet
+alstodet
+trmdetals
+tfalsdet
+
+
+para el diccionario del hv
+DetIdCabL
+CabHVFiles
+HVInfoDictF
+hvtodet
+hvmodva
+trmdethv
+hvcomdet
+
+Estas son funciones que necesitan 2 o mas de los diccionarios existentes
+cabtohv
+alstohv
+hvtoal
+tfcabtoals
+hvtocab
+aliastocab
+cabhvals
+hvalscab
+cabalshv
